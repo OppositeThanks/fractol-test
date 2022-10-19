@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lperrin <lperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 11:14:45 by lperrin           #+#    #+#             */
-/*   Updated: 2022/10/03 16:26:57 by lperrin          ###   ########.fr       */
+/*   Created: 2022/10/17 15:31:46 by lperrin           #+#    #+#             */
+/*   Updated: 2022/10/17 15:31:46 by lperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ void	complex_limits(t_data *data)
 		data->min_r = -2.0;
 		data->max_r = 2.0;
 		data->min_i = -2.0;
-		data->max_i = data->min_i + (data->max_r - data->min_r) * HEIGHT / WIDTH;
+		data->max_i = data->min_i
+			+ (data->max_r - data->min_r) * HEIGHT / WIDTH;
 	}
 	else
 	{
 		data->min_r = -2.0;
 		data->max_r = 1.0;
-		data->max_i = -1.5;
-		data->min_i = data->max_i + (data->max_r - data->min_r) * HEIGHT / WIDTH;
+		data->max_i = -1.2;
+		data->min_i = data->max_i
+			+ (data->max_r - data->min_r) * HEIGHT / WIDTH;
 	}
 }
 

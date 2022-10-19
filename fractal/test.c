@@ -6,7 +6,7 @@
 /*   By: lperrin <lperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:06:00 by lperrin           #+#    #+#             */
-/*   Updated: 2022/10/05 11:06:55 by lperrin          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:21:10 by lperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,24 @@ static void	check_args(t_data *data, int ac, char **av)
 	get_julia_starting_values(data, ac, av);
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char *argv[])
 {
-	mlx_t *mlx;
-	t_data data;
-	
-	if (ac < 2)
+	t_data	data;
+
+	data.zoom = 1.0;
+	if (argc < 2)
 		help_mess(&data);
-	write(1, "\noifff\n", 7);
-	check_args(&data, ac ,av);
-	mlx = mlx_init(WIDTH, HEIGHT, "Fract-ol", 1);
-	if (!mlx)
+	check_args(&data, argc, argv);
+	data.mlx = mlx_init(WIDTH, HEIGHT, "Fract-ol", 1);
+	if (!data.mlx)
 		clear_exit(msg("MLX: error connecting to mlx.", "", 1), &data);
 	init(&data);
 	render(&data);
-	/* MIRAR LOS HOOKS */
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	mlx_scroll_hook(data.mlx, &my_scrollhook, ((void *)&data));
+	mlx_loop(data.mlx);
+	mlx_terminate(data.mlx);
 	return (0);
 }
-	
-/* .1- Check nbr of args
-.2- Check which fractal is used
-.3- Init t_fractol
-.4- Call mlx functionsthat init the mlx_new_window
-.5- Call the function that will create the fractal
-.6- Call mlx function that will display + interact
-(make ft_exit that make sure you exit properly and with the right error message)
-	 */
 
 /* fractol <type> <options> <color>
 M,m,1

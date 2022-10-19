@@ -6,7 +6,7 @@
 /*   By: lperrin <lperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:45:22 by lperrin           #+#    #+#             */
-/*   Updated: 2022/10/05 10:28:06 by lperrin          ###   ########.fr       */
+/*   Updated: 2022/10/19 10:32:19 by lperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	clear_exit(int exit_code, t_data *data)
 	if (!data)
 		exit(exit_code);
 	if (data->img)
-		mlx_delete_image(&data->mlx, data->img);
-	mlx_close_window(&data->mlx);
-	mlx_terminate(&data->mlx);
-	free(&data->mlx);
+		mlx_delete_image(data->mlx, data->img);
+	mlx_close_window(data->mlx);
+	mlx_terminate(data->mlx);
+	free(data->mlx);
 	exit(exit_code);
 }
 

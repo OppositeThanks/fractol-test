@@ -6,7 +6,7 @@
 /*   By: lperrin <lperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 10:55:12 by lperrin           #+#    #+#             */
-/*   Updated: 2022/10/05 09:44:14 by lperrin          ###   ########.fr       */
+/*   Updated: 2022/10/10 15:23:22 by lperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void mandelbrot(t_data *data, int x, int y, double cr, double ci)
 		if ((zr * zr + zi * zi) > 4.0)
 		{
 			included = 0;
-			break;
+			break ;
 		}
 		tmp = 2 * zr * zi + ci;
 		zr = zr * zr - zi * zi + cr;
@@ -107,14 +107,6 @@ if ((zr * zr + zi * zi) > 4)
 	//no pixel */
 //mlx_put_pixel(img.img, x, y, (unsigned int)(i + 255));
 //0x00FF0000 is hex for ARGB(0, 255, 0, 0);
-
-/* .1- Check nbr of args
-.2- Check which fractal is used
-.3- Init t_fractol
-.4- Call mlx functionsthat init the mlx_new_window
-.5- Call the function that will create the fractal
-.6- Call mlx function that will display + interact
-(make ft_exit that make sure you exit properly and with the right error message) */
 
 //fscan(stdin, "c");
 //system("leaks -q fractol");
